@@ -77,27 +77,28 @@ pip install pandas numpy seaborn scikit-learn imbalanced-learn xgboost joblib
 - joblib
 - Usage
 
-Ensure Churn_Modelling.csv is in the project directory
+---- Ensure Churn_Modelling.csv is in the project directory
 
-Run the Jupyter notebook Untitled1.ipynb
+---- Run the Jupyter notebook Untitled1.ipynb
 
-The trained model is saved as churn_predict_model using joblib
-Loading the Saved Model
+---- The trained model is saved as churn_predict_model using joblib
+     Loading the Saved Model
 
-import joblib
-model = joblib.load('churn_predict_model')
+---- import joblib
+     model = joblib.load('churn_predict_model')
 
 # Make predictions
-# predictions = model.predict(new_data)
+ predictions = model.predict(new_data)
 
 # Key Insights
 
-The dataset was imbalanced (7963 retained vs 2037 churned), requiring SMOTE for balancing
-Random Forest achieved the best overall performance
-Feature engineering and standardization significantly improved model accuracy
-Ensemble methods (RF, GBC, XGB) outperformed traditional algorithms
+- The dataset was imbalanced (7963 retained vs 2037 churned),requiring SMOTE for balancing
+- Random Forest achieved the best overall performance
+- Feature engineering and standardization significantly improved model accuracy
+- Ensemble methods (RF, GBC, XGB) outperformed traditional algorithms
 
 # Project Structure
+
 CUSTOMER-CHURN-PREDICTION/
 │
 ├── Churn_Modelling.csv          # Dataset
@@ -106,13 +107,15 @@ CUSTOMER-CHURN-PREDICTION/
 └── README.md                    # Project documentation
 
 # Future Improvements
-Hyperparameter tuning for better performance
-Feature importance analysis
-Cross-validation for robust evaluation
-Deployment as a web application
-Real-time prediction API
-Author
-Hasnain006-nain
+
+- Hyperparameter tuning for better performance
+- Feature importance analysis
+- Cross-validation for robust evaluation
+- Deployment as a web application
+- Real-time prediction API
+
+# Author
+                     Hasnain006-nain
 
 # License
 This project is open source and available for educational purposes.
