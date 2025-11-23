@@ -97,14 +97,17 @@ pip install pandas numpy seaborn scikit-learn imbalanced-learn xgboost joblib
 - Feature engineering and standardization significantly improved model accuracy
 - Ensemble methods (RF, GBC, XGB) outperformed traditional algorithms
 
-# Project Structure
+## Project Structure
 
+```
 CUSTOMER-CHURN-PREDICTION/
 │
 ├── Churn_Modelling.csv          # Dataset
 ├── Untitled1.ipynb              # Main notebook
 ├── churn_predict_model          # Saved XGBoost model
 └── README.md                    # Project documentation
+```
+
 
 
 # Future Improvements
