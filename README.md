@@ -115,7 +115,7 @@ CUSTOMER-CHURN-PREDICTION/
 - Real-time prediction API
 
 # Author
-                     Hasnain006-nain
+Hasnian Haider
 
 # License
 This project is open source and available for educational purposes.
