@@ -58,44 +58,54 @@ Seven classification algorithms were trained and evaluated:
 
 ## Installation
 
-```bash
 # Clone the repository
+
 git clone https://github.com/Hasnain006-nain/CUSTOMER-CHURN-PREDICTION.git
 cd CUSTOMER-CHURN-PREDICTION
 
 # Install required packages
+
 pip install pandas numpy seaborn scikit-learn imbalanced-learn xgboost joblib
-Requirements
-pandas
-numpy
-seaborn
-scikit-learn
-imbalanced-learn
-xgboost
-joblib
-Usage
+
+- Requirements
+- pandas
+- numpy
+- seaborn
+- scikit-learn
+- imbalanced-learn
+- xgboost
+- joblib
+- Usage
+
 Ensure Churn_Modelling.csv is in the project directory
+
 Run the Jupyter notebook Untitled1.ipynb
+
 The trained model is saved as churn_predict_model using joblib
 Loading the Saved Model
+
 import joblib
 model = joblib.load('churn_predict_model')
 
 # Make predictions
 # predictions = model.predict(new_data)
-Key Insights
+
+# Key Insights
+
 The dataset was imbalanced (7963 retained vs 2037 churned), requiring SMOTE for balancing
 Random Forest achieved the best overall performance
 Feature engineering and standardization significantly improved model accuracy
 Ensemble methods (RF, GBC, XGB) outperformed traditional algorithms
-Project Structure
+
+# Project Structure
 CUSTOMER-CHURN-PREDICTION/
 │
 ├── Churn_Modelling.csv          # Dataset
 ├── Untitled1.ipynb              # Main notebook
 ├── churn_predict_model          # Saved XGBoost model
 └── README.md                    # Project documentation
-Future Improvements
+
+# Future Improvements
 Hyperparameter tuning for better performance
 Feature importance analysis
 Cross-validation for robust evaluation
@@ -104,17 +114,8 @@ Real-time prediction API
 Author
 Hasnain006-nain
 
-License
+# License
 This project is open source and available for educational purposes.
 
 
 ---
-
-To add this README to your GitHub repository:
-
-1. **Create the README file**: Save the above content as `README.md` in your project folder
-2. **Update your repository**:
-   ```bash
-   git add README.md
-   git commit -m "Add comprehensive README"
-   git push origin main
