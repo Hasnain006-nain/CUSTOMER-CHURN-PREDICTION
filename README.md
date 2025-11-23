@@ -48,29 +48,21 @@ The system provides:
 - 4GB RAM minimum
 - Windows/Linux/MacOS
 
-## 🚀 Installation
-
-### Prerequisites
-
-- Python 3.7 or higher
-- pip package manager
-- 4GB RAM minimum
-- Windows/Linux/MacOS
 
 ### Step 1: Clone the Repository
-
-```bash
 git clone https://github.com/Hasnain006-nain/CUSTOMER-CHURN-PREDICTION.git
 cd CUSTOMER-CHURN-PREDICTION
-Step 2: Install Dependencies
+
+# Step 2: Install Dependencies
 pip install -r requirements.txt
-Step 3: Verify Dataset
+
+# Step 3: Verify Dataset
 Ensure Churn_Modelling.csv is in the project directory with 10,000 customer records.
 
-📖 Usage
-Running the Jupyter Notebook
+# 📖 Usage Running the Jupyter Notebook
 jupyter notebook Untitled1.ipynb
-Loading the Pre-trained Model
+
+# Loading the Pre-trained Model
 import joblib
 import numpy as np
 
@@ -87,7 +79,8 @@ sample_data = np.array([[619, 42, 2, 0.0, 1, 1, 1, 101348.88, 0, 0, 0]])
 # Make prediction
 prediction = model.predict(sample_data)
 print(f"Churn Prediction: {'Yes' if prediction[0] == 1 else 'No'}")
-Training from Scratch
+
+# Training from Scratch
 # Run all cells in the notebook sequentially
 # The pipeline includes:
 # 1. Data loading and exploration
@@ -96,7 +89,8 @@ Training from Scratch
 # 4. Model training (7 algorithms)
 # 5. Performance evaluation
 # 6. Model saving
-📁 Project Structure
+
+# 📁 Project Structure
 CUSTOMER-CHURN-PREDICTION/
 │
 ├── Churn_Modelling.csv          # Dataset with 10,000 customer records
@@ -105,16 +99,20 @@ CUSTOMER-CHURN-PREDICTION/
 ├── requirements.txt             # Python dependencies
 ├── README.md                    # Project documentation
 └── LICENSE                      # MIT License
-🔧 How It Works
+
+# 🔧 How It Works
 1. Data Loading and Exploration
+
 df = pd.read_csv('Churn_Modelling.csv')
 df.info()  # 10,000 entries, 14 columns
 df.isnull().sum()  # No missing values
+
 Purpose: Load and understand the dataset structure
 Why: Ensures data quality and identifies preprocessing needs
 Output: 10,000 customer records with 14 features
 
 2. Data Preprocessing
+
 # Remove irrelevant columns
 df = df.drop(['RowNumber', 'CustomerId', 'Surname'], axis=1)
 
@@ -129,6 +127,7 @@ One-hot encoding prevents ordinal assumptions
 Result: 11 numerical features ready for modeling
 
 3. Handling Imbalanced Data with SMOTE
+
 from imblearn.over_sampling import SMOTE
 
 X = df.drop('Exited', axis=1)
@@ -148,6 +147,7 @@ Balances dataset to 7963 vs 7963
 Impact: Prevents model bias, improves recall for churned customers
 
 4. Feature Scaling
+
 from sklearn.preprocessing import StandardScaler
 
 sc = StandardScaler()
@@ -163,62 +163,85 @@ Formula: z = (x - μ) / σ
 Where μ = mean, σ = standard deviation
 
 5. Model Training
+
 Logistic Regression
 from sklearn.linear_model import LogisticRegression
 log = LogisticRegression()
 log.fit(X_train, y_train)
-Type: Linear classifier
-Best For: Baseline model, interpretable coefficients
-Accuracy: 76.25%
+
+# Type: Linear classifier
+# Best For: Baseline model, interpretable coefficients
+# Accuracy: 76.25%
+
 Support Vector Classifier (SVC)
+
 from sklearn import svm
 svm = svm.SVC()
 svm.fit(X_train, y_train)
-Type: Kernel-based classifier
-Best For: Non-linear decision boundaries
-Accuracy: 82.73%
+
+# Type: Kernel-based classifier
+# Best For: Non-linear decision boundaries
+# Accuracy: 82.73%
+
 K-Nearest Neighbors (KNN)
+
 from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
-Type: Instance-based learning
-Best For: Simple, no training phase
-Accuracy: 80.99%
+
+# Type: Instance-based learning
+# Best For: Simple, no training phase
+# Accuracy: 80.99%
+
 Decision Tree
+
 from sklearn.tree import DecisionTreeClassifier
 dt = DecisionTreeClassifier()
 dt.fit(X_train, y_train)
-Type: Tree-based classifier
-Best For: Interpretable rules, handles non-linearity
-Accuracy: 79.66%
+
+# Type: Tree-based classifier
+# Best For: Interpretable rules, handles non-linearity
+# Accuracy: 79.66%
+
 Random Forest
+
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier()
 rf.fit(X_train, y_train)
-Type: Ensemble of decision trees
-Best For: High accuracy, reduces overfitting
-Accuracy: 85.48% ⭐ BEST
+
+# Type: Ensemble of decision trees
+# Best For: High accuracy, reduces overfitting
+# Accuracy: 85.48% ⭐ BEST
+
 Gradient Boosting Classifier
+
 from sklearn.ensemble import GradientBoostingClassifier
 gbc = GradientBoostingClassifier()
 gbc.fit(X_train, y_train)
-Type: Sequential ensemble
-Best For: Corrects previous model errors
-Accuracy: 83.01%
+
+# Type: Sequential ensemble
+# Best For: Corrects previous model errors
+# Accuracy: 83.01%
+
 XGBoost
+
 import xgboost as xgb
 model_xgb = xgb.XGBClassifier(random_state=42, verbosity=0)
 model_xgb.fit(X_train, y_train)
-Type: Optimized gradient boosting
-Best For: Production deployment, speed
-Accuracy: 85.12%
+
+# Type: Optimized gradient boosting
+# Best For: Production deployment, speed
+# Accuracy: 85.12%
+
 6. Model Evaluation
+
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
+
 Metrics Explained:
 
 Accuracy: Overall correctness = (TP + TN) / Total
@@ -231,31 +254,37 @@ Accuracy alone can be misleading with imbalanced data
 Precision matters for targeted retention campaigns (avoid false alarms)
 Recall matters for not missing at-risk customers
 F1-Score balances both concerns
+
 7. Model Persistence
+
 import joblib
 joblib.dump(model_xgb, 'churn_predict_model')
 Purpose: Save trained model for deployment
 Why: Avoid retraining, enable production use
 Format: Pickle-based serialization via joblib
 
-📊 Model Performance
+# 📊 Model Performance
+
 Accuracy Comparison
 | Model | Accuracy | Precision | Recall | F1-Score | |-------|----------|-----------|--------|----------| | Logistic Regression | 76.25% | 74.96% | 77.24% | 76.08% | | Support Vector Classifier | 82.73% | 82.90% | 81.51% | 82.20% | | K-Nearest Neighbors | 80.99% | 79.66% | 82.11% | 80.87% | | Decision Tree | 79.66% | 78.12% | 81.13% | 79.60% | | Random Forest | 85.48% | 84.59% | 85.96% | 85.27% | | Gradient Boosting | 83.01% | 82.99% | 82.07% | 82.53% | | XGBoost | 85.12% | 84.36% | 82.07% | 82.53% |
 
-Key Insights
+# Key Insights
 ✅ Best Overall Model: Random Forest (85.48% accuracy)
 ✅ Best Precision: SVC (82.90%)
 ✅ Best Recall: Random Forest (85.96%)
 ✅ Fastest Training: Logistic Regression
 ✅ Production Choice: XGBoost (speed + accuracy balance)
 
-Performance Visualization
+# Performance Visualization
 The notebook includes bar plots comparing:
 
 Model accuracy across all 7 algorithms
 Precision scores for each model
 Visual identification of best performers
-⚙️ Configuration
+
+
+# ⚙️ Configuration
+
 Adjusting Train-Test Split
 X_train, X_test, y_train, y_test = train_test_split(
     X_res, y_res, 
@@ -282,7 +311,8 @@ model_xgb = xgb.XGBClassifier(
     learning_rate=0.3,  # Step size
     subsample=1.0  # Fraction of samples per tree
 )
-📊 Dataset Details
+
+# 📊 Dataset Details
 Source
 File: Churn_Modelling.csv
 Records: 10,000 customers
@@ -346,7 +376,8 @@ Issue: Model predictions always same class
 Cause: Imbalanced data or improper scaling
 Solution: Ensure SMOTE is applied and features are scaled
 
-📦 Dependencies Explained
+# 📦 Dependencies Explained
+
 Core Libraries
 pandas
 Purpose: Data manipulation and analysis
@@ -385,7 +416,8 @@ xgboost>=1.5.0
 seaborn>=0.11.0
 matplotlib>=3.4.0
 joblib>=1.1.0
-🤝 Contributing
+
+# 🤝 Contributing
 Contributions are welcome! Here's how you can help:
 
 Reporting Bugs
@@ -417,7 +449,8 @@ Follow PEP 8 style guide
 Add docstrings to functions
 Include unit tests for new features
 Update README with new functionality
-📄 License
+
+# 📄 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 MIT License
@@ -441,19 +474,21 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-👨‍💻 Author
+
+# 👨‍💻 Author
 Hasnain Haider
 
 Email: hhnain1006@gmail.com
 GitHub: @Hasnain006-nain
 LinkedIn: Connect with me
-🙏 Acknowledgments
+
+# 🙏 Acknowledgments
 scikit-learn - Comprehensive machine learning library
 XGBoost - High-performance gradient boosting
 imbalanced-learn - SMOTE and resampling techniques
 Kaggle - Dataset inspiration and community
 Stack Overflow - Problem-solving community
-📞 Support
+# 📞 Support
 For issues, questions, or suggestions:
 
 GitHub Issues: Open an issue
@@ -469,5 +504,26 @@ Discussions: Use GitHub Discussions for general questions
 [ ] Real-time data pipeline
 [ ] Docker containerization
 [ ] Cloud deployment (AWS/Azure/GCP)
+
 ⭐ If you found this project helpful, please give it a star!
 Made with ❤️ by Hasnain Haider
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
