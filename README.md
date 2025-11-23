@@ -111,7 +111,7 @@ Purpose: Load and understand the dataset structure
 Why: Ensures data quality and identifies preprocessing needs
 Output: 10,000 customer records with 14 features
 
-2. Data Preprocessing
+# 2. Data Preprocessing
 
 # Remove irrelevant columns
 df = df.drop(['RowNumber', 'CustomerId', 'Surname'], axis=1)
@@ -126,7 +126,7 @@ ML algorithms require numerical inputs
 One-hot encoding prevents ordinal assumptions
 Result: 11 numerical features ready for modeling
 
-3. Handling Imbalanced Data with SMOTE
+# 3. Handling Imbalanced Data with SMOTE
 
 from imblearn.over_sampling import SMOTE
 
@@ -146,7 +146,7 @@ Creates synthetic samples along the line segments
 Balances dataset to 7963 vs 7963
 Impact: Prevents model bias, improves recall for churned customers
 
-4. Feature Scaling
+# 4. Feature Scaling
 
 from sklearn.preprocessing import StandardScaler
 
@@ -162,16 +162,16 @@ Improves convergence speed for gradient-based models
 Formula: z = (x - μ) / σ
 Where μ = mean, σ = standard deviation
 
-5. Model Training
+# 5. Model Training
 
 Logistic Regression
 from sklearn.linear_model import LogisticRegression
 log = LogisticRegression()
 log.fit(X_train, y_train)
 
-# Type: Linear classifier
-# Best For: Baseline model, interpretable coefficients
-# Accuracy: 76.25%
+- Type: Linear classifier
+- Best For: Baseline model, interpretable coefficients
+- Accuracy: 76.25%
 
 Support Vector Classifier (SVC)
 
@@ -179,9 +179,9 @@ from sklearn import svm
 svm = svm.SVC()
 svm.fit(X_train, y_train)
 
-# Type: Kernel-based classifier
-# Best For: Non-linear decision boundaries
-# Accuracy: 82.73%
+- Type: Kernel-based classifier
+- Best For: Non-linear decision boundaries
+- Accuracy: 82.73%
 
 K-Nearest Neighbors (KNN)
 
@@ -189,9 +189,9 @@ from sklearn.neighbors import KNeighborsClassifier
 knn = KNeighborsClassifier()
 knn.fit(X_train, y_train)
 
-# Type: Instance-based learning
-# Best For: Simple, no training phase
-# Accuracy: 80.99%
+- Type: Instance-based learning
+- Best For: Simple, no training phase
+- Accuracy: 80.99%
 
 Decision Tree
 
@@ -199,9 +199,9 @@ from sklearn.tree import DecisionTreeClassifier
 dt = DecisionTreeClassifier()
 dt.fit(X_train, y_train)
 
-# Type: Tree-based classifier
-# Best For: Interpretable rules, handles non-linearity
-# Accuracy: 79.66%
+- Type: Tree-based classifier
+- Best For: Interpretable rules, handles non-linearity
+- Accuracy: 79.66%
 
 Random Forest
 
@@ -209,9 +209,9 @@ from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier()
 rf.fit(X_train, y_train)
 
-# Type: Ensemble of decision trees
-# Best For: High accuracy, reduces overfitting
-# Accuracy: 85.48% ⭐ BEST
+- Type: Ensemble of decision trees
+- Best For: High accuracy, reduces overfitting
+- Accuracy: 85.48% ⭐ BEST
 
 Gradient Boosting Classifier
 
@@ -219,9 +219,9 @@ from sklearn.ensemble import GradientBoostingClassifier
 gbc = GradientBoostingClassifier()
 gbc.fit(X_train, y_train)
 
-# Type: Sequential ensemble
-# Best For: Corrects previous model errors
-# Accuracy: 83.01%
+- Type: Sequential ensemble
+- Best For: Corrects previous model errors
+- Accuracy: 83.01%
 
 XGBoost
 
@@ -229,11 +229,11 @@ import xgboost as xgb
 model_xgb = xgb.XGBClassifier(random_state=42, verbosity=0)
 model_xgb.fit(X_train, y_train)
 
-# Type: Optimized gradient boosting
-# Best For: Production deployment, speed
-# Accuracy: 85.12%
+- Type: Optimized gradient boosting
+- Best For: Production deployment, speed
+- Accuracy: 85.12%
 
-6. Model Evaluation
+# 6. Model Evaluation
 
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
@@ -255,7 +255,7 @@ Precision matters for targeted retention campaigns (avoid false alarms)
 Recall matters for not missing at-risk customers
 F1-Score balances both concerns
 
-7. Model Persistence
+# 7. Model Persistence
 
 import joblib
 joblib.dump(model_xgb, 'churn_predict_model')
@@ -322,6 +322,7 @@ Feature Descriptions
 | Feature | Type | Description | Range/Values | |---------|------|-------------|--------------| | CreditScore | Numerical | Customer's credit score | 350-850 | | Geography | Categorical | Customer location | France, Spain, Germany | | Gender | Categorical | Customer gender | Male, Female | | Age | Numerical | Customer age | 18-92 years | | Tenure | Numerical | Years with bank | 0-10 years | | Balance | Numerical | Account balance | 0-250,898 | | NumOfProducts | Numerical | Number of products | 1-4 | | HasCrCard | Binary | Has credit card | 0 (No), 1 (Yes) | | IsActiveMember | Binary | Active membership | 0 (No), 1 (Yes) | | EstimatedSalary | Numerical | Estimated salary | 11-199,992 | | Exited | Binary | Churned (Target) | 0 (No), 1 (Yes) |
 
 Class Distribution
+
 Retained Customers: 7,963 (79.63%)
 Churned Customers: 2,037 (20.37%)
 Imbalance Ratio: 3.9:1
@@ -338,7 +339,7 @@ Issue: XGBoost installation fails
 Solution for Windows:
 
 pip install xgboost
-# If fails, try:
+If fails, try:
 conda install -c conda-forge xgboost
 Solution for Linux/Mac:
 
@@ -379,34 +380,36 @@ Solution: Ensure SMOTE is applied and features are scaled
 # 📦 Dependencies Explained
 
 Core Libraries
-pandas
+
+- pandas
 Purpose: Data manipulation and analysis
 Used for: Loading CSV, data exploration, preprocessing
 Why: Industry standard, powerful DataFrame operations
-numpy
+- numpy
 Purpose: Numerical computing
 Used for: Array operations, mathematical functions
 Why: Fast, efficient, foundation for other libraries
-scikit-learn
+- scikit-learn
 Purpose: Machine learning algorithms
 Used for: Models, metrics, preprocessing, train-test split
 Why: Comprehensive, well-documented, production-ready
-imbalanced-learn
+- imbalanced-learn
 Purpose: Handling imbalanced datasets
 Used for: SMOTE oversampling
 Why: Specialized for class imbalance problems
-XGBoost
+- XGBoost
 Purpose: Gradient boosting framework
 Used for: High-performance classification
 Why: State-of-the-art accuracy, fast training, production-ready
-seaborn
+- seaborn
 Purpose: Statistical data visualization
 Used for: Bar plots, count plots
 Why: Beautiful defaults, built on matplotlib
-joblib
+- joblib
 Purpose: Model serialization
 Used for: Saving/loading trained models
 Why: Efficient for large numpy arrays, scikit-learn integration
+
 requirements.txt
 pandas>=1.3.0
 numpy>=1.21.0
@@ -494,7 +497,8 @@ For issues, questions, or suggestions:
 GitHub Issues: Open an issue
 Email: hhnain1006@gmail.com
 Discussions: Use GitHub Discussions for general questions
-🚀 Future Enhancements
+
+# 🚀 Future Enhancements
 [ ] Web dashboard with Streamlit
 [ ] REST API for predictions
 [ ] Feature importance analysis
