@@ -48,6 +48,15 @@ The system provides:
 - 4GB RAM minimum
 - Windows/Linux/MacOS
 
+## 🚀 Installation
+
+### Prerequisites
+
+- Python 3.7 or higher
+- pip package manager
+- 4GB RAM minimum
+- Windows/Linux/MacOS
+
 ### Step 1: Clone the Repository
 
 ```bash
