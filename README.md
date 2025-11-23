@@ -70,9 +70,10 @@ import numpy as np
 model = joblib.load('churn_predict_model')
 
 # Prepare your data (11 features after preprocessing)
-# Features: CreditScore, Age, Tenure, Balance, NumOfProducts, 
-#           HasCrCard, IsActiveMember, EstimatedSalary,
-#           Geography_Germany, Geography_Spain, Gender_Male
+# Features: 
+           CreditScore, Age, Tenure, Balance, NumOfProducts, 
+           HasCrCard, IsActiveMember, EstimatedSalary,
+           Geography_Germany, Geography_Spain, Gender_Male
 
 sample_data = np.array([[619, 42, 2, 0.0, 1, 1, 1, 101348.88, 0, 0, 0]])
 
@@ -80,15 +81,15 @@ sample_data = np.array([[619, 42, 2, 0.0, 1, 1, 1, 101348.88, 0, 0, 0]])
 prediction = model.predict(sample_data)
 print(f"Churn Prediction: {'Yes' if prediction[0] == 1 else 'No'}")
 
-# Training from Scratch
-# Run all cells in the notebook sequentially
+
 # The pipeline includes:
-# 1. Data loading and exploration
-# 2. Preprocessing and feature engineering
-# 3. SMOTE balancing
-# 4. Model training (7 algorithms)
-# 5. Performance evaluation
-# 6. Model saving
+
+ 1. Data loading and exploration
+ 2. Preprocessing and feature engineering
+ 3. SMOTE balancing
+ 4. Model training (7 algorithms)
+ 5. Performance evaluation
+ 6. Model saving
 
 # 📁 Project Structure
 CUSTOMER-CHURN-PREDICTION/
